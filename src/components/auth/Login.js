@@ -1,9 +1,11 @@
 import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
 export const Login = () => {
     const { auth } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onLogin = (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ export const Login = () => {
             .then(() => {
                 signInWithEmailAndPassword(auth, email, password)
                     .then(() => {
-                        console.log('logged');
+                        navigate('/chat');
                     })
                     .catch((err) => {
                         alert(err.message);

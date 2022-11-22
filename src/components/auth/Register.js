@@ -4,9 +4,11 @@ import { setPersistence, createUserWithEmailAndPassword, browserSessionPersisten
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { setDoc, doc } from 'firebase/firestore';
 import { storage, database } from "../../firebaseConfig";
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
     const { auth } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const onRegister = (e) => {
         e.preventDefault();
@@ -49,6 +51,7 @@ export const Register = () => {
                                 });
                             })
                     })
+                navigate('/chat');
             })
             .catch((err) => {
                 alert(err.message);
