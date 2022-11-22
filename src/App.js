@@ -7,7 +7,7 @@ function App() {
   return (
     <AuthContextProvider>
       <div className="App">
-        <Login />
+        <Register />
       </div>
     </AuthContextProvider>
   );
