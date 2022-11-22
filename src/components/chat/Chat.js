@@ -3,10 +3,13 @@ import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 
 export const Chat = () => {
     const { auth } = useContext(AuthContext);
+    const { users } = useContext(UserContext);
+    console.log(users);
     const navigate = useNavigate();
 
     const onLogout = () => {
