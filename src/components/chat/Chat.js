@@ -1,4 +1,24 @@
+import { signOut } from 'firebase/auth';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
+
+
 export const Chat = () => {
+    const { auth } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const onLogout = () => {
+        signOut(auth)
+            .then(() => {
+                navigate('/');
+            })
+            .catch((err) => {
+                alert(err.message);
+            })
+    };
+
     return (
         <div className="chat__container">
             <div className="header">
@@ -6,9 +26,9 @@ export const Chat = () => {
                     <a className="btn" href="">
                         User
                     </a>
-                    <a className="btn" href="">
+                    <Link className="btn" to="#" onClick={onLogout}>
                         Logout
-                    </a>
+                    </Link>
                 </section>
             </div>
             <div className="users__page">
