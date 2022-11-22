@@ -110,6 +110,10 @@ h6 {
     margin: 10px;
 }
 
+.search__form {
+    color: black;
+}
+
 .search__form>input {
     background-color: rgba(231, 231, 238, 0.5);
     width: 100%;
@@ -117,6 +121,10 @@ h6 {
     border-radius: 16px;
     text-indent: 10px;
     border: none;
+}
+
+input[type=text] {
+    color: black;
 }
 
 input[type=text]:focus {
@@ -176,7 +184,7 @@ input[type=text]:focus {
 }
 
 .message__img {
-    width: 25%;
+    margin-right: 10px;
 }
 
 .chat {

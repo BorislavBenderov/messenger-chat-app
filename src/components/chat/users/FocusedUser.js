@@ -1,14 +1,24 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../../context/UserContext";
-import { updateDoc, doc, arrayUnion } from 'firebase/firestore';
+import { updateDoc, doc, arrayUnion, onSnapshot } from 'firebase/firestore';
 import { database } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
+import { Messages } from './Messages';
 import { v4 as uuidv4 } from 'uuid';
 
 export const FocusedUser = () => {
     const { loggedUser } = useContext(AuthContext);
     const { clickedUser, chatId } = useContext(UserContext);
+    const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+
+    useEffect(() => {
+        onSnapshot(doc(database, 'chats', chatId), (snapshot) => {
+            setMessages(snapshot.data().messages.map((item) => {
+                return { ...item };
+            }));
+        })
+    }, []);
 
     const onMessage = (e) => {
         e.preventDefault(e);
@@ -40,7 +50,7 @@ export const FocusedUser = () => {
                 <h3>{clickedUser.displayName}</h3>
             </section>
             <section className="messages">
-                
+                {messages.map(message => <Messages key={message.id} message={message}/>)}
             </section>
             <section className="chat">
                 <form className="chat__form" onSubmit={onMessage}>

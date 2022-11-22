@@ -1,20 +1,22 @@
-export const Messages = () => {
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
+
+export const Messages = ({ message }) => {
+    const { loggedUser } = useContext(AuthContext);
+
+    const currentUserMessages = message.uid === loggedUser.uid;
     return (
-        <div className="message">
+        <div className="message" style={{flexDirection: currentUserMessages ? 'row-reverse' : ''}}>
             <div className="message__img">
                 <img
                     className="user__photo"
-                    src={''}
+                    src={message.img}
                     alt=""
                 />
             </div>
             <div className="message__info">
                 <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Repudiandae autem aspernatur placeat nihil accusamus cum blanditiis
-                    consequuntur molestias, ab nostrum? Ipsum enim, obcaecati quibusdam
-                    totam sit voluptates? Quasi culpa qui nobis optio accusantium amet
-                    vel dolorem numquam temporibus! Iusto, possimus?
+                    {message.message}
                 </p>
                 <i>like</i>
             </div>

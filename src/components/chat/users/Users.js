@@ -8,7 +8,7 @@ export const Users = () => {
     const { loggedUser } = useContext(AuthContext);
     const [search, setSearch] = useState('');
 
-    const notCurrentUsers = users.filter(user => user.uid !== loggedUser.uid)
+    const notCurrentUsers = users.filter(user => user.uid !== loggedUser?.uid)
         .filter(user => user.displayName.toLowerCase().includes(search.toLowerCase()));
 
     return (
