@@ -27,9 +27,9 @@ export const Chat = () => {
         <div className="chat__container">
             <div className="header">
                 <section className="header__btn__container">
-                    <a className="btn" href="">
+                    <Link className="btn" to="/edit">
                         User
-                    </a>
+                    </Link>
                     <Link className="btn" to="#" onClick={onLogout}>
                         Logout
                     </Link>

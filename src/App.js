@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Login } from './components/auth/Login';
 import { Register } from './components/auth/Register';
 import { Chat } from './components/chat/Chat';
+import { EditUser } from './components/chat/users/EditUser';
 import { AuthContextProvider } from './context/AuthContext';
 import { UserContextProvider } from './context/UserContext';
 import { ProtectedRoutes } from './ProtectedRoutes';
@@ -16,6 +17,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route element={<ProtectedRoutes />}>
               <Route path='/chat' element={<Chat />} />
+              <Route path='/edit' element={<EditUser />} />
             </Route>
           </Routes>
         </div>
