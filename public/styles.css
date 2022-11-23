@@ -209,7 +209,7 @@ input[type=text]:focus {
 
 .message__box {
     width: 100%;
-    background-color: lightsalmon;
+    background-color: lightskyblue;
     border-radius: 16px;
     margin-left: 5px;
 }
@@ -219,6 +219,8 @@ input[type=text]:focus {
     bottom: 0;
     left: 0;
     width: 100%;
+    border-top: 1px solid rgba(207, 191, 191, 0.342);
+    padding-top: 10px;
 }
 
 .chat__form {

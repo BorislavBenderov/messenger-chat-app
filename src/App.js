@@ -4,6 +4,7 @@ import { Register } from './components/auth/Register';
 import { Chat } from './components/chat/Chat';
 import { AuthContextProvider } from './context/AuthContext';
 import { UserContextProvider } from './context/UserContext';
+import { ProtectedRoutes } from './ProtectedRoutes';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
           <Routes>
             <Route path='/' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/chat' element={<Chat />} />
+            <Route element={<ProtectedRoutes />}>
+              <Route path='/chat' element={<Chat />} />
+            </Route>
           </Routes>
         </div>
       </UserContextProvider>
