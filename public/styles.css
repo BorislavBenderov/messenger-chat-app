@@ -139,6 +139,7 @@ input[type=text]:focus {
 .uploaded__photo {
     border-radius: 16px;
     margin-left: 5px;
+    margin-right: 5px;
 }
 
 ::-webkit-input-placeholder {
@@ -212,6 +213,12 @@ input[type=text]:focus {
     background-color: lightskyblue;
     border-radius: 16px;
     margin-left: 5px;
+}
+
+.messages {
+    height: 85%;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .chat {

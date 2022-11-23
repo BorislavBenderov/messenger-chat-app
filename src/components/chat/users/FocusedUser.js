@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { UserContext } from "../../../context/UserContext";
 import { updateDoc, doc, arrayUnion, onSnapshot } from 'firebase/firestore';
 import { database, storage } from "../../../firebaseConfig";
@@ -14,6 +14,7 @@ export const FocusedUser = () => {
     const [messages, setMessages] = useState([]);
     const [likes, setLikes] = useState([]);
     const [input, setInput] = useState('');
+    const scroll = useRef();
 
     useEffect(() => {
         onSnapshot(doc(database, 'chats', chatId), (snapshot) => {
@@ -52,6 +53,7 @@ export const FocusedUser = () => {
                         })
                             .then(() => {
                                 setInput('');
+                                scroll.current.scrollIntoView({ behavior: 'smooth' });
                             })
                             .catch((err) => {
                                 alert(err.message);
@@ -66,7 +68,7 @@ export const FocusedUser = () => {
                 <h3>{clickedUser.displayName}</h3>
             </section>
             <section className="messages">
-                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes} />)}
+                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes} scroll={scroll}/>)}
             </section>
             <section className="chat">
                 <form className="chat__form" onSubmit={onMessage}>

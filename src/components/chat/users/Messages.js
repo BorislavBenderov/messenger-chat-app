@@ -4,7 +4,7 @@ import { UserContext } from "../../../context/UserContext";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { database } from "../../../firebaseConfig";
 
-export const Messages = ({ message, likes }) => {
+export const Messages = ({ message, likes, scroll }) => {
     const { loggedUser } = useContext(AuthContext);
     const { chatId } = useContext(UserContext);
 
@@ -35,7 +35,7 @@ export const Messages = ({ message, likes }) => {
     }
 
     return (
-        <div className="message" style={{ flexDirection: currentUserMessages ? 'row-reverse' : '' }}>
+        <div className="message" style={{ flexDirection: currentUserMessages ? 'row-reverse' : '' }} ref={scroll}>
             <img
                 className="user__photo"
                 src={message.img}
