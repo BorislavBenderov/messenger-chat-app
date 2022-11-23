@@ -127,6 +127,20 @@ input[type=text]:focus {
     outline: none;
 }
 
+.image__upload>input {  
+    display: none;
+}
+
+.upload__img {
+    cursor: pointer;
+    width: 60px;
+}
+
+.uploaded__photo {
+    border-radius: 16px;
+    margin-left: 5px;
+}
+
 ::-webkit-input-placeholder {
     color: gray;
 }
@@ -152,9 +166,9 @@ input[type=text]:focus {
     border-radius: 0 16px 16px 0;
 }
 
-.all__users__info:{  
+.all__users__info: {
 
-    background-color:white;
+    background-color: white;
 
 }
 
@@ -193,10 +207,22 @@ input[type=text]:focus {
     margin-left: 10px;
 }
 
+.message__box {
+    width: 100%;
+    background-color: lightsalmon;
+    border-radius: 16px;
+    margin-left: 5px;
+}
+
 .chat {
     position: absolute;
     bottom: 0;
     left: 0;
+    width: 100%;
+}
+
+.chat__form {
+    display: flex;
 }
 
 .chat__form>input {

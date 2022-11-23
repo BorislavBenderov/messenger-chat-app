@@ -1,10 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../../context/UserContext";
 import { updateDoc, doc, arrayUnion, onSnapshot } from 'firebase/firestore';
-import { database } from "../../../firebaseConfig";
+import { database, storage } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
 import { Messages } from './Messages';
 import { v4 as uuidv4 } from 'uuid';
+import UPLOAD from '../upload.png';
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export const FocusedUser = () => {
     const { loggedUser } = useContext(AuthContext);
@@ -25,24 +27,36 @@ export const FocusedUser = () => {
     const onMessage = (e) => {
         e.preventDefault(e);
 
-        if (input === '') {
-            alert('Please enter a valid message.');
-            return;
-        }
+        const formdata = new FormData(e.target);
+        const image = formdata.get('image');
 
-        updateDoc(doc(database, 'chats', chatId), {
-            messages: arrayUnion({
-                message: input,
-                uid: loggedUser.uid,
-                img: loggedUser.photoURL,
-                id: uuidv4()
-            })
-        })
-            .then(() => {
-                setInput('');
-            })
-            .catch((err) => {
+        const storageRef = ref(storage, `photos/${uuidv4()}`);
+        const uploadTask = uploadBytesResumable(storageRef, image);
+        uploadTask.on('state_changed',
+            (snapshot) => {
+            },
+            (err) => {
                 alert(err.message);
+            },
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                    .then((downloadUrl) => {
+                        updateDoc(doc(database, 'chats', chatId), {
+                            messages: arrayUnion({
+                                message: input,
+                                uid: loggedUser.uid,
+                                img: loggedUser.photoURL,
+                                id: uuidv4(),
+                                photo: downloadUrl || null
+                            })
+                        })
+                            .then(() => {
+                                setInput('');
+                            })
+                            .catch((err) => {
+                                alert(err.message);
+                            })
+                    })
             })
     }
 
@@ -52,7 +66,7 @@ export const FocusedUser = () => {
                 <h3>{clickedUser.displayName}</h3>
             </section>
             <section className="messages">
-                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes}/>)}
+                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes} />)}
             </section>
             <section className="chat">
                 <form className="chat__form" onSubmit={onMessage}>
@@ -60,10 +74,16 @@ export const FocusedUser = () => {
                         className="message__box"
                         type="text"
                         placeholder="Type your message here"
+                        name="message"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
-                    <input type="file" />
+                    <div className="image__upload">
+                        <label htmlFor="image">
+                            <img className="upload__img" src={UPLOAD} alt="" />
+                        </label>
+                        <input type="file" id="image" name="image" />
+                    </div>
                 </form>
             </section>
         </div>

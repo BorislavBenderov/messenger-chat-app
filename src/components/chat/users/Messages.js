@@ -41,9 +41,14 @@ export const Messages = ({ message, likes }) => {
                 src={message.img}
                 alt=""
             />
-            <p style={{ backgroundColor: currentUserMessages ? 'blueviolet' : 'gray' }}>
-                {message.message}
-            </p>
+            {message.message
+                ? <p style={{ backgroundColor: currentUserMessages ? 'blueviolet' : 'gray' }}>
+                    {message.message}
+                </p>
+                : ''}
+            {message.photo
+                ? <img className="uploaded__photo" src={message.photo} alt="" />
+                : ''}
             <i className={`fa fa-heart${!likes?.includes(message.id) ? '-o' : ''} fa-lg`}
                 style={{ cursor: 'pointer', color: likes?.includes(message.id) ? 'red' : null }}
                 onClick={likeHandler}
