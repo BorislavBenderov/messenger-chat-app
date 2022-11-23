@@ -18,6 +18,7 @@ export const User = ({ user }) => {
 
             if (!res.exists()) {
                 await setDoc(doc(database, 'chats', combinedId), {
+                    likes: [],
                     messages: []
                 })
             }

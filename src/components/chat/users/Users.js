@@ -16,9 +16,9 @@ export const Users = () => {
             <section className="user__info">
                 <img
                     className="user__photo"
-                    src={loggedUser.photoURL}
+                    src={loggedUser?.photoURL}
                 />
-                <h2 className="user__name">{loggedUser.displayName}</h2>
+                <h2 className="user__name">{loggedUser?.displayName}</h2>
             </section>
             <section className="search__bar">
                 <form className="search__form">

@@ -10,6 +10,7 @@ export const FocusedUser = () => {
     const { loggedUser } = useContext(AuthContext);
     const { clickedUser, chatId } = useContext(UserContext);
     const [messages, setMessages] = useState([]);
+    const [likes, setLikes] = useState([]);
     const [input, setInput] = useState('');
 
     useEffect(() => {
@@ -17,12 +18,13 @@ export const FocusedUser = () => {
             setMessages(snapshot.data().messages.map((item) => {
                 return { ...item };
             }));
+            setLikes(snapshot.data().likes);
         })
-    }, []);
+    }, [chatId]);
 
     const onMessage = (e) => {
         e.preventDefault(e);
-        
+
         if (input === '') {
             alert('Please enter a valid message.');
             return;
@@ -50,7 +52,7 @@ export const FocusedUser = () => {
                 <h3>{clickedUser.displayName}</h3>
             </section>
             <section className="messages">
-                {messages.map(message => <Messages key={message.id} message={message}/>)}
+                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes}/>)}
             </section>
             <section className="chat">
                 <form className="chat__form" onSubmit={onMessage}>

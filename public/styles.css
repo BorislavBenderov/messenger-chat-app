@@ -71,7 +71,7 @@ h6 {
 
 .chat__page {
     position: relative;
-    background-color: black;
+    background-color: white;
     width: 60%;
 }
 
@@ -123,10 +123,6 @@ h6 {
     border: none;
 }
 
-input[type=text] {
-    color: black;
-}
-
 input[type=text]:focus {
     outline: none;
 }
@@ -151,6 +147,17 @@ input[type=text]:focus {
     margin-left: 10px;
 }
 
+.all__users__info {
+    margin-right: 5px;
+    border-radius: 0 16px 16px 0;
+}
+
+.all__users__info:{  
+
+    background-color:white;
+
+}
+
 .users__name {
     margin: auto 10px;
     font-weight: 600;
@@ -162,7 +169,7 @@ input[type=text]:focus {
 }
 
 .focused__user {
-    color: white;
+    color: black;
     padding-left: 20px;
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(207, 191, 191, 0.342);
@@ -176,21 +183,24 @@ input[type=text]:focus {
 .message {
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin: 20px;
 }
 
-.message__info {
-    color: white;
-}
-
-.message__img {
-    margin-right: 10px;
+.message>p {
+    padding: 5px 10px;
+    border-radius: 16px;
+    margin-left: 10px;
 }
 
 .chat {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.chat__form>input {
+    color: black;
 }
 
 .auth {
