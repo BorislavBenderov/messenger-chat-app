@@ -28,7 +28,7 @@ export const Chat = () => {
             <div className="header">
                 <section className="header__btn__container">
                     <Link className="btn" to="/edit">
-                        User
+                        Edit User
                     </Link>
                     <Link className="btn" to="#" onClick={onLogout}>
                         Logout

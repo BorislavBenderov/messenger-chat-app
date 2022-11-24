@@ -5,7 +5,7 @@ import { database, storage } from "../../../firebaseConfig";
 import { AuthContext } from "../../../context/AuthContext";
 import { Messages } from './Messages';
 import { v4 as uuidv4 } from 'uuid';
-import UPLOAD from '../upload.png';
+import UPLOAD from '../../../assets/upload.png';
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export const FocusedUser = () => {

@@ -21,6 +21,7 @@ body {
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-family: 'Poppins', sans-serif;
 }
 
 img,
@@ -129,7 +130,7 @@ input[type=text]:focus {
     outline: none;
 }
 
-.image__upload>input {  
+.image__upload>input {
     display: none;
 }
 
@@ -306,4 +307,53 @@ form * {
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+    .user__info {
+        flex-direction: column;
+        
+    }
+
+    .user__name {
+        font-size: 15px;
+    }
+
+    .all__users__card {
+        flex-direction: column;
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .all__users__card {
+        font-size: 8px;
+    }
+
+    .all__users__card .user__photo {
+        margin-left: 0;
+    }
+
+    .uploaded__photo {
+        width: 100px;
+    }
+
+    .user__info .user__photo {
+        margin-left: 0;
+    }
+
+    .all__users>h3 {
+        font-size: 10px;
+    }
+
+    .user__name {
+        font-size: 10px;
+    }
+
+    .search__form>input[type='text'] {
+        font-size: 8px;
+        text-indent: 6px;
+        height: 10px;
+    }
+
 }
