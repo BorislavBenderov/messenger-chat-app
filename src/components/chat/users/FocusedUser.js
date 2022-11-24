@@ -14,6 +14,7 @@ export const FocusedUser = () => {
     const [messages, setMessages] = useState([]);
     const [likes, setLikes] = useState([]);
     const [input, setInput] = useState('');
+    const inputFileRef = useRef(null);
     const scroll = useRef();
 
     useEffect(() => {
@@ -30,6 +31,10 @@ export const FocusedUser = () => {
 
         const formdata = new FormData(e.target);
         const image = formdata.get('image');
+
+        if (input === '' && image.name === '') {
+            return;
+        }
 
         const storageRef = ref(storage, `photos/${uuidv4()}`);
         const uploadTask = uploadBytesResumable(storageRef, image);
@@ -53,6 +58,7 @@ export const FocusedUser = () => {
                         })
                             .then(() => {
                                 setInput('');
+                                inputFileRef.current.value = null;
                                 scroll.current.scrollIntoView({ behavior: 'smooth' });
                             })
                             .catch((err) => {
@@ -68,7 +74,7 @@ export const FocusedUser = () => {
                 <h3>{clickedUser.displayName}</h3>
             </section>
             <section className="messages">
-                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes} scroll={scroll}/>)}
+                {messages.map(message => <Messages key={message.id} message={message} messages={messages} likes={likes} scroll={scroll} />)}
             </section>
             <section className="chat">
                 <form className="chat__form" onSubmit={onMessage}>
@@ -84,7 +90,7 @@ export const FocusedUser = () => {
                         <label htmlFor="image">
                             <img className="upload__img" src={UPLOAD} alt="" />
                         </label>
-                        <input type="file" id="image" name="image" />
+                        <input ref={inputFileRef} type="file" id="image" name="image" />
                     </div>
                 </form>
             </section>

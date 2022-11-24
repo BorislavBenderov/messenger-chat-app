@@ -28,14 +28,14 @@ export const Chat = () => {
             <div className="header">
                 <section className="header__btn__container">
                     <Link className="btn" to="/edit">
-                        Edit User
+                        <i className="fa fa-pencil" aria-hidden="true"></i>
                     </Link>
                     <Link className="btn" to="#" onClick={onLogout}>
-                        Logout
+                        <i className="fa fa-sign-out" aria-hidden="true"></i>
                     </Link>
                 </section>
             </div>
-                <Users />
+            <Users />
             {clickedUser && <FocusedUser />}
         </div>
     );

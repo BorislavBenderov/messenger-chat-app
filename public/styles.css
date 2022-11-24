@@ -71,12 +71,6 @@ h6 {
     width: 16%;
 }
 
-.chat__page {
-    position: relative;
-    background-color: white;
-    width: 77%;
-}
-
 .header__btn__container {
     display: flex;
     flex-direction: column;
@@ -84,6 +78,7 @@ h6 {
 }
 
 .btn {
+    font-size: 20px;
     color: white;
     text-decoration: none;
     margin: auto;
@@ -190,7 +185,8 @@ input[type=text]:focus {
     color: black;
     padding-left: 20px;
     padding-bottom: 5px;
-    border-bottom: 1px solid rgba(207, 191, 191, 0.342);
+    border-bottom: 1px solid white;
+    margin: 0 5px;
 }
 
 .focused__user>h3 {
@@ -221,6 +217,8 @@ input[type=text]:focus {
 }
 
 .messages {
+    display: flex;
+    flex-direction: column-reverse;
     height: 85%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -232,7 +230,6 @@ input[type=text]:focus {
     bottom: 0;
     left: 0;
     width: 100%;
-    border-top: 1px solid rgba(207, 191, 191, 0.342);
     padding-top: 10px;
     margin-bottom: 7px;
 }
@@ -243,6 +240,12 @@ input[type=text]:focus {
 
 .chat__form>input {
     color: black;
+}
+
+.chat__page {
+    background-color: lightblue;
+    position: relative;
+    width: 77%;
 }
 
 .auth {
@@ -354,6 +357,10 @@ form * {
         font-size: 8px;
         text-indent: 6px;
         height: 10px;
+    }
+
+    .btn {
+        font-size: 15px;
     }
 
 }
