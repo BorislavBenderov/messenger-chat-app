@@ -4,7 +4,7 @@ import { setPersistence, createUserWithEmailAndPassword, browserSessionPersisten
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { setDoc, doc } from 'firebase/firestore';
 import { storage, database } from "../../firebaseConfig";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 export const Register = () => {
     const { auth } = useContext(AuthContext);
@@ -71,6 +71,10 @@ export const Register = () => {
             <input type="password" placeholder="Password" id="password" name="password" />
             <label htmlFor="repeatPassword"></label>
             <input type="password" placeholder="Repeat Password" id="repeatPassword" name="repeatPassword" />
+            <div className="log-reg">
+                <p>Already have an account?</p>
+                <Link className='link' to="/">Sign in</Link>
+            </div>
             <button type="submit">Register</button>
         </form>
     );

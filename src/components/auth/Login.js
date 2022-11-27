@@ -1,6 +1,6 @@
 import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from 'firebase/auth';
 import { AuthContext } from '../../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 
 export const Login = () => {
@@ -38,6 +38,10 @@ export const Login = () => {
             <input type="text" placeholder="Email" id="email" name="email" />
             <label htmlFor="password">Password</label>
             <input type="password" placeholder="Password" id="password" name="password" />
+            <div className="log-reg">
+                <p>No account?</p>
+                <Link className='link' to="/register">Create one</Link>
+            </div>
             <button type="submit">Log In</button>
         </form>
     );

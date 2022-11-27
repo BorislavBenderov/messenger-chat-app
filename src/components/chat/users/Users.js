@@ -22,7 +22,7 @@ export const Users = () => {
             </section>
             <section className="search__bar">
                 <form className="search__form">
-                    <input type="text" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
+                    <input type="text" placeholder="Search user" value={search} onChange={(e) => setSearch(e.target.value)} />
                 </form>
             </section>
             <section className="all__users">
