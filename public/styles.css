@@ -220,8 +220,8 @@ input[type=text]:focus {
 
 .messages {
     display: flex;
-    flex-direction: column-reverse;
-    height: 85%;
+    flex-direction: column;
+    height: 80%;
     overflow-y: auto;
     overflow-x: hidden;
     background: lightblue;
@@ -248,6 +248,14 @@ input[type=text]:focus {
     background-color: lightblue;
     position: relative;
     width: 77%;
+}
+
+.send {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    background-color: blue;
+    margin-right: 5px;
 }
 
 .auth {
