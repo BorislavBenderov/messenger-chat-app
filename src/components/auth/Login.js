@@ -33,7 +33,7 @@ export const Login = () => {
 
     return (
         <form className='auth' onSubmit={onLogin}>
-            <h3>Login Here</h3>
+            <h3>Chat App</h3>
             <label htmlFor="email">Username</label>
             <input type="text" placeholder="Email" id="email" name="email" />
             <label htmlFor="password">Password</label>

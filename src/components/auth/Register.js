@@ -81,7 +81,7 @@ export const Register = () => {
 
     return (
         <form className='auth' onSubmit={onRegister}>
-            <h3>Register Here</h3>
+            <h3>Chat App</h3>
             <label htmlFor="username"></label>
             <input type="text" placeholder="Username" id="username" name="username" />
             <label htmlFor="email"></label>
