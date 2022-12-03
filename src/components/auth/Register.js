@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from '../../context/AuthContext';
 import { setPersistence, createUserWithEmailAndPassword, browserSessionPersistence, updateProfile } from 'firebase/auth';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { setDoc, doc } from 'firebase/firestore';
 import { storage, database } from "../../firebaseConfig";
 import { useNavigate, Link } from 'react-router-dom';
+import UPLOAD from '../../assets/upload.png';
 
 export const Register = () => {
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [isFileAdd, setIsFileAdd] = useState(false);
 
     const onRegister = (e) => {
         e.preventDefault();
@@ -65,12 +67,17 @@ export const Register = () => {
             <input type="text" placeholder="Username" id="username" name="username" />
             <label htmlFor="email"></label>
             <input type="text" placeholder="Email" id="email" name="email" />
-            <label htmlFor="userImg"></label>
-            <input type="file" placeholder="Choose a photo" id="userImg" name="userImg" />
             <label htmlFor="password"></label>
             <input type="password" placeholder="Password" id="password" name="password" />
             <label htmlFor="repeatPassword"></label>
             <input type="password" placeholder="Repeat Password" id="repeatPassword" name="repeatPassword" />
+            <label htmlFor="userImg"><img
+                className="upload__img"
+                src={UPLOAD}
+                alt="" />
+                {isFileAdd ? "File is added!" : "Add a file"}
+            </label>
+            <input type="file" placeholder="Choose a photo" id="userImg" name="userImg" onChange={() => setIsFileAdd(true)} />
             <div className="log-reg">
                 <p>Already have an account?</p>
                 <Link className='link' to="/">Sign in</Link>

@@ -133,6 +133,7 @@ input[type=text]:focus {
 .upload__img {
     cursor: pointer;
     width: 60px;
+    border-radius: 8px;
 }
 
 .uploaded__photo {
@@ -335,10 +336,14 @@ form * {
     font-weight: 700;
 }
 
+input[type="file"] {
+    display: none;
+}
+
 @media screen and (max-width: 1024px) {
     .user__info {
         flex-direction: column;
-        
+
     }
 
     .user__name {
