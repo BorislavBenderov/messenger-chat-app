@@ -10,27 +10,25 @@ export const Messages = ({ message, likes, scroll }) => {
 
     const currentUserMessages = message.uid === loggedUser?.uid;
 
-    const likeHandler = () => {
+    const likeHandler = async () => {
         if (likes.includes(message.id)) {
-            updateDoc(doc(database, `chats/${chatId}`), {
-                likes: arrayRemove(message.id)
-            })
-                .then(() => {
-                    console.log('unliked');
-                })
-                .catch((err) => {
-                    alert(err.message);
-                })
+            try {
+                await updateDoc(doc(database, `chats/${chatId}`), {
+                    likes: arrayRemove(message.id)
+                });
+            } catch (error) {
+                alert(error.message);
+            }
+
+
         } else {
-            updateDoc(doc(database, `chats/${chatId}`), {
-                likes: arrayUnion(message.id)
-            })
-                .then(() => {
-                    console.log('liked');
+            try {
+                await updateDoc(doc(database, `chats/${chatId}`), {
+                    likes: arrayUnion(message.id)
                 })
-                .catch((err) => {
-                    alert(err.message);
-                })
+            } catch (error) {
+                alert(error.message);
+            }
         }
     }
 
@@ -49,10 +47,12 @@ export const Messages = ({ message, likes, scroll }) => {
             {message.photo
                 ? <img className="uploaded__photo" src={message.photo} alt="" />
                 : ''}
-            <i className={`fa fa-heart${!likes?.includes(message.id) ? '-o' : ''} fa-lg`}
-                style={{ cursor: 'pointer', color: likes?.includes(message.id) ? 'red' : null }}
-                onClick={likeHandler}
-            ></i>
+            {likes?.includes(message.id) || !currentUserMessages
+                ? <i className={`fa fa-heart${!likes?.includes(message.id) ? '-o' : ''} fa-lg`}
+                    style={{ cursor: 'pointer', color: likes?.includes(message.id) ? 'red' : null, marginLeft: '5px', marginRight: '5px' }}
+                    onClick={!currentUserMessages ? likeHandler : null}
+                ></i>
+                : ''}
         </div>
     );
 }
