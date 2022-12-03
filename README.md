@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Chat Application with React JS
+![My Image](/src/assets/messages.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
 
-## Available Scripts
+Chat application created with React JS. Users can interact with each other with messages
+in chat panel. They can send messages and image files, likes user messages and edit their
+profile picture and username.
 
-In the project directory, you can run:
+## Services
 
-### `npm start`
+### Login
+![My Image](/src/assets/login.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This service is initialized with two users, which can be used for immediate testing:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- borko@abv.bg: 123456
+- gabi@abv.bg: 123456
 
-### `npm test`
+### Register
+![My Image](/src/assets/register.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Create a new user by entered email, username, password, confirmation password and profile picture.
 
-### `npm run build`
+### Home
+![My Image](/src/assets/chat.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After login or register user will be redirect to a home page. On this page user can see all other users
+and start chat with them.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Start Chat
+![My Image](/src/assets/messages.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+When user click on some of other users he will have possibility to start chat conversation with him.
+Users can send and like messages and photos.
 
-### `npm run eject`
+### Edit User
+![My Image](/src/assets/edit-user.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+When user click on edit button he have possibility to edit his profile username and picture.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Search
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+User have possibility to search other users by their usernames.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Logout
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+When user click on logout button his session has expired.
