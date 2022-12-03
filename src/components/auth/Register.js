@@ -6,9 +6,11 @@ import { setDoc, doc } from 'firebase/firestore';
 import { storage, database } from "../../firebaseConfig";
 import { useNavigate, Link } from 'react-router-dom';
 import UPLOAD from '../../assets/upload.png';
+import { UserContext } from "../../context/UserContext";
 
 export const Register = () => {
     const { auth } = useContext(AuthContext);
+    const { users } = useContext(UserContext);
     const navigate = useNavigate();
     const [isFileAdd, setIsFileAdd] = useState(false);
 
@@ -23,8 +25,25 @@ export const Register = () => {
         const password = formData.get('password');
         const repeatPassword = formData.get('repeatPassword');
 
+        const isUsernameInUse = users.find(user => user.displayName === username);
+
         if (username === '' || email === '' || userImg.name === '' || password === '' || repeatPassword === '') {
             alert('Please fill all the fields!');
+            return;
+        }
+
+        if (password !== repeatPassword) {
+            alert("Your password and confirmation password do not match!");
+            return;
+        }
+
+        if (isUsernameInUse) {
+            alert('This username is already in use!');
+            return;
+        }
+
+        if (username.length < 2 || username.length > 10) {
+            alert('Username must be more than 2 characters and less then 10!');
             return;
         }
 
