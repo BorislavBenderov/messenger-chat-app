@@ -134,6 +134,7 @@ input[type=text]:focus {
     cursor: pointer;
     width: 60px;
     border-radius: 8px;
+    margin: auto;
 }
 
 .uploaded__photo {
