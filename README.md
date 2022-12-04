@@ -46,3 +46,8 @@ User have possibility to search other users by their usernames.
 ### Logout
 
 When user click on logout button his session has expired.
+
+
+### Guest Users
+
+Guest users can see only login and register pages.
