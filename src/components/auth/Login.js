@@ -2,8 +2,10 @@ import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence }
 import { AuthContext } from '../../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+import { useState } from 'react';
 
 export const Login = () => {
+    const [err, setErr] = useState('');
     const { auth } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -15,7 +17,7 @@ export const Login = () => {
         const password = formData.get('password');
 
         if (email === '' || password === '') {
-            alert('Please fill all the fields!');
+            setErr('Please fill all the fields!');
             return;
         }
 
@@ -26,7 +28,7 @@ export const Login = () => {
                         navigate('/chat');
                     })
                     .catch((err) => {
-                        alert(err.message);
+                        setErr(err.message);
                     })
             })
     }
@@ -43,6 +45,7 @@ export const Login = () => {
                 <Link className='link' to="/register">Create one</Link>
             </div>
             <button type="submit">Log In</button>
+            <p className="errors">{err}</p>
         </form>
     );
 }

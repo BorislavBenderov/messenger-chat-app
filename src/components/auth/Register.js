@@ -9,6 +9,7 @@ import UPLOAD from '../../assets/upload.png';
 import { UserContext } from "../../context/UserContext";
 
 export const Register = () => {
+    const [err, setErr] = useState('');
     const { auth } = useContext(AuthContext);
     const { users } = useContext(UserContext);
     const navigate = useNavigate();
@@ -28,22 +29,22 @@ export const Register = () => {
         const isUsernameInUse = users.find(user => user.displayName === username);
 
         if (username === '' || email === '' || userImg.name === '' || password === '' || repeatPassword === '') {
-            alert('Please fill all the fields!');
+            setErr('Please fill all the fields!');
             return;
         }
 
         if (password !== repeatPassword) {
-            alert("Your password and confirmation password do not match!");
+            setErr("Your password and confirmation password do not match!");
             return;
         }
 
         if (isUsernameInUse) {
-            alert('This username is already in use!');
+            setErr('This username is already in use!');
             return;
         }
 
         if (username.length < 2 || username.length > 10) {
-            alert('Username must be more than 2 characters and less then 10!');
+            setErr('Username must be more than 2 characters and less then 10!');
             return;
         }
 
@@ -75,7 +76,7 @@ export const Register = () => {
                 navigate('/chat');
             })
             .catch((err) => {
-                alert(err.message);
+                setErr(err.message);
             })
     }
 
@@ -102,6 +103,7 @@ export const Register = () => {
                 <Link className='link' to="/">Sign in</Link>
             </div>
             <button type="submit">Register</button>
+            <p className="errors">{err}</p>
         </form>
     );
 }
