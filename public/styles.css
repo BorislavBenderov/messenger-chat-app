@@ -349,6 +349,12 @@ input[type="file"] {
     display: none;
 }
 
+.errors {
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 1024px) {
     .user__info {
         flex-direction: column;
