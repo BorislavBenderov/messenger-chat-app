@@ -15,7 +15,7 @@ profile picture and username.
 This service is initialized with two users, which can be used for immediate testing:
 
 - borko@abv.bg: 123456
-- gabi@abv.bg: 123456
+- gabriela@abv.bg: 123456
 
 ### Register
 ![My Image](/src/assets/register.png)
@@ -51,3 +51,7 @@ When user click on logout button his session has expired.
 ### Guest Users
 
 Guest users can see only login and register pages.
+
+## Live Demo
+
+https://borislavbenderov.github.io/messenger-chat-app
