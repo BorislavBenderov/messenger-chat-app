@@ -152,6 +152,7 @@ input[type=text]:focus {
     padding-bottom: 5px;
     margin: 0 5px;
     color: white;
+    align-items: center;
 }
 
 .all__users__card>img {
