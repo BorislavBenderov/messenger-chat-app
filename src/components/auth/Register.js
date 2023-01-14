@@ -14,6 +14,7 @@ export const Register = () => {
     const { users } = useContext(UserContext);
     const navigate = useNavigate();
     const [isFileAdd, setIsFileAdd] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const onRegister = (e) => {
         e.preventDefault();
@@ -48,6 +49,7 @@ export const Register = () => {
             return;
         }
 
+        setLoading(true);
         setPersistence(auth, browserSessionPersistence)
             .then(async () => {
                 const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -74,9 +76,11 @@ export const Register = () => {
                             })
                     })
                 navigate('/chat');
+                setLoading(false);
             })
             .catch((err) => {
                 setErr(err.message);
+                setLoading(false);
             })
     }
 
